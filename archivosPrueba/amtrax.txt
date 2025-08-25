@@ -1,0 +1,1 @@
+Este archivo contiene otra secuencia incrustada: HH y después continúa con el texto final.
