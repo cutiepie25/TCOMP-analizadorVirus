@@ -1,4 +1,5 @@
 import tkinter as tk
+import os
 from tkinter import filedialog, messagebox
 from controladores.admin_archivo import AdminArchivo
 from controladores.analizador import Analizador
@@ -33,15 +34,15 @@ class Ventana:
             self.bytes = admin.leer_bytes()
 
             # Mostrar ruta
-            self.textbox_ruta.config(state="normal")
+            self.textbox_ruta.config(state="disabled")
             self.textbox_ruta.delete(0, tk.END)
             self.textbox_ruta.insert(0, archivo)
-            self.textbox_ruta.config(state="readonly")
+            self.textbox_ruta.config(state="disabled")
 
             # Mostrar bytes
             self.textbox_bytes.delete("1.0", tk.END)
             self.textbox_bytes.insert(tk.END, " ".join(str(b) for b in self.bytes))
-
+            self.textbox_bytes.config(state="disabled")
             self.button_analizar.config(state="normal")
         else:
             messagebox.showerror("Error", "Debe seleccionar un archivo!")
@@ -50,7 +51,7 @@ class Ventana:
         if self.bytes:
             analizador = Analizador(self.bytes)
             virus, estado = analizador.analizar()
-            nombre_archivo = self.textbox_ruta.get()
+            nombre_archivo = os.path.basename(self.textbox_ruta.get())
 
             if virus:
                 mensaje = (

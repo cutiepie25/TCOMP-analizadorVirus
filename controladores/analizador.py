@@ -3,11 +3,11 @@ class Analizador:
         self.bytes_archivo = bytes_archivo
 
         self.virus_patterns = {
-            "Usama": [15, 30, 15, 49],
-            "Amtrax": [72, 72, 15, 29],
-            "ÉBola": [29, 32, 53, 29],
-            "Ah1N1": [72, 32, 32, 20],
-            "Covid19": [30, 25, 20, 19],
+            "Usama": bytes([15, 30, 15, 49]),
+            "Amtrax": bytes([72, 72, 15, 29]),
+            "Ébola": bytes([29, 32, 53, 29]),
+            "Ah1N1": bytes([72, 32, 32, 20]),
+            "Covid19": bytes([30, 25, 20, 19]),
         }
 
     def analizar(self):
